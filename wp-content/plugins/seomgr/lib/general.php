@@ -18,7 +18,7 @@ class Seomgr_general {
      */
     public function render_view($path = '', $data = array()) {
         $license = $this->validateLicencse();
-        if ($license['status'] == 0) {
+        if (isset($license['status']) && $license['status'] == 0) {
             echo $license['message'];
             echo "<br/>";
             if (!empty($license['content'])) {
