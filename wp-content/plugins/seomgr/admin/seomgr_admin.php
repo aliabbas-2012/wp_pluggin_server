@@ -23,7 +23,7 @@ class Seomgr_admin {
         
     }
 
-    public function load_stylesheet() { 
+    public function load_stylesheet() {
         
     }
 
@@ -44,7 +44,7 @@ class Seomgr_admin {
         add_submenu_page('seomgr', 'Backlinks', 'Backlinks', 'manage_options', 'seomgr_backlinks', array($this, 'render_admin_backlinks'));
     }
 
-    public function render_admin_dashboard() { 
+    public function render_admin_dashboard() {
         seomgr_load_file('lib/dashboard.php');
         Seomgr_dashboard::getInstance()->load_page();
     }

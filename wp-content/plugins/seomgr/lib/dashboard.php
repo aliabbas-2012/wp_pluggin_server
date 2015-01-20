@@ -11,14 +11,11 @@ class Seomgr_dashboard {
         return $class;
     }
 
-    public function load_page() {  
+    public function load_page() {
+        if(isset($_POST['site']['submit'])){
+            Seomgr_site_model::getInstance()->insert($_POST['site']);
+        }
         $data = array('image' => 'Selection_011');
-        Seomgr_general::getInstance()->render_view('backlinks', $data);
-        
-        $data = array('image' => 'Selection_010');
-        Seomgr_general::getInstance()->render_view('backlinks', $data);
-        
-        $data = array('image' => 'Selection_009');
         Seomgr_general::getInstance()->render_view('backlinks', $data);
     }
 
