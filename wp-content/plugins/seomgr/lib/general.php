@@ -19,7 +19,8 @@ class Seomgr_general {
         $view_path = SEOMGR_VIEWS_DIR . $path . '.php';
         if (file_exists($view_path)) {
             extract($data);
-            require($view_path);
+            require_once(SEOMGR_VIEWS_DIR."layout.php");
+            
         } else {
             echo "File: " . $view_path . " not found.";
         }
