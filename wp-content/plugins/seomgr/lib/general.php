@@ -19,6 +19,7 @@ class Seomgr_general {
         $view_path = SEOMGR_VIEWS_DIR . $path . '.php';
         if (file_exists($view_path)) {
             extract($data);
+            $content = file_get_contents($view_path,true);
             require_once(SEOMGR_VIEWS_DIR."layout.php");
             
         } else {

@@ -53,7 +53,7 @@
 
     <!--BEGIN PAGE WRAPPER-->
     <div id="page-wrapper">
-        <?php require_once($view_path); ?>
+        <?php echo $content; ?>
     </div>
     <!--END CONTENT-->
     <!--BEGIN FOOTER-->
