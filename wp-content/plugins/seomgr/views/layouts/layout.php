@@ -59,7 +59,7 @@
     <!--BEGIN FOOTER-->
     <div id="footer">
         <div class="copyright">
-            <a href="http://themifycloud.com">2014 © KAdmin Responsive Multi-Purpose Template</a></div>
+            <a href="http://itst.com">Itst</a></div>
     </div>
     <!--END FOOTER-->
 </div>
@@ -92,14 +92,14 @@
 <script src="<?php echo SEOMGR_ASSETS_URL ?>script/jquery.flot.stack.js"></script>
 <script src="<?php echo SEOMGR_ASSETS_URL ?>script/jquery.flot.spline.js"></script>
 <script src="<?php echo SEOMGR_ASSETS_URL ?>script/zabuto_calendar.min.js"></script>
-<script src="<?php echo SEOMGR_ASSETS_URL ?>script/index.js"></script>
+<!--<script src="<?php echo SEOMGR_ASSETS_URL ?>script/index.js"></script>-->
 <!--LOADING SCRIPTS FOR CHARTS-->
-<script src="<?php echo SEOMGR_ASSETS_URL ?>script/highcharts.js"></script>
+<!--<script src="<?php echo SEOMGR_ASSETS_URL ?>script/highcharts.js"></script>
 <script src="<?php echo SEOMGR_ASSETS_URL ?>script/data.js"></script>
 <script src="<?php echo SEOMGR_ASSETS_URL ?>script/drilldown.js"></script>
 <script src="<?php echo SEOMGR_ASSETS_URL ?>script/exporting.js"></script>
 <script src="<?php echo SEOMGR_ASSETS_URL ?>script/highcharts-more.js"></script>
 <script src="<?php echo SEOMGR_ASSETS_URL ?>script/charts-highchart-pie.js"></script>
-<script src="<?php echo SEOMGR_ASSETS_URL ?>script/charts-highchart-more.js"></script>
+<script src="<?php echo SEOMGR_ASSETS_URL ?>script/charts-highchart-more.js"></script>-->
 <!--CORE JAVASCRIPT-->
 <script src="<?php echo SEOMGR_ASSETS_URL ?>script/main.js"></script>

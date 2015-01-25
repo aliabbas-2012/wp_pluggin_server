@@ -2,12 +2,13 @@
 
 class Seomgr_group_model {
 
-    var $table = 'groups';
+    var $table = 'group';
     var $wpdb;
 
     function __construct() {
         global $wpdb, $seomgr_id;
         $this->wpdb = $wpdb;
+      
         $this->table = $wpdb->prefix . $seomgr_id . $this->table;
     }
 
@@ -17,6 +18,7 @@ class Seomgr_group_model {
     }
 
     public function save($data = array()) {
+        
         if (!empty($data)) {
 
             unset($data['submit']);
@@ -24,7 +26,9 @@ class Seomgr_group_model {
                 $this->update($data, array('id' => $data['id']));
             } else {
                 $data['created_at'] = date('Y-m-d H:i:s');
+              
                 $this->wpdb->insert($this->table, $data);
+              
             }
         }
         return false;
