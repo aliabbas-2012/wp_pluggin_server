@@ -32,30 +32,42 @@ class Seomgr_general {
                 echo $license['content'];
             }
         } else {
+
             $layout = 'layouts/' . $layout;
             $view_path = SEOMGR_VIEWS_DIR . $path . '.php';
             if (file_exists($view_path)) {
 
-                ob_start();
+
 
                 if (!empty($data)) {
                     extract($data);
                 }
-//                
-//                $content = ob_get_clean();
-//
-//                if ($get_content) {
-//                    ob_start();
-//                }
-                 
-                require(SEOMGR_VIEWS_DIR . $layout . '.php');
-                
-                if ($get_content) {
-                    //return ob_get_clean();
+
+                if (!strstr($_SERVER["REQUEST_URI"], "ajax")) {
+                    require(SEOMGR_VIEWS_DIR . $layout . '.php');
+                } else {
+                    require_once($view_path);
                 }
             } else {
                 echo "File: " . $view_path . " not found.";
             }
+        }
+    }
+
+    public function renderPartial($path) {
+
+        $view_path = SEOMGR_VIEWS_DIR . $path . '.php';
+        if (file_exists($view_path)) {
+
+
+
+            if (!empty($data)) {
+                extract($data);
+            }
+
+            require_once($view_path);
+        } else {
+            echo "File: " . $view_path . " not found.";
         }
     }
 

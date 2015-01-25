@@ -37,17 +37,17 @@
 
                             <a href='javascript:seomgr_show_popup("site");'>Add Site</a>
 
-                            <?php Seomgr_general::getInstance()->render_view('lists/site'); ?>
+                            <?php Seomgr_general::getInstance()->renderPartial('lists/site'); ?>
 
                             <a href='javascript:seomgr_show_popup("group");'>Add Group</a>
-                            <?php //echo Seomgr_general::getInstance()->render_view('forms/group', '', true); ?>
+                            <?php //echo Seomgr_general::getInstance()->renderPartial('forms/group', '', true); ?>
 
-                            <?php Seomgr_general::getInstance()->render_view('lists/group'); ?>    
+                            <?php Seomgr_general::getInstance()->renderPartial('lists/group'); ?>    
 
                             <a href='javascript:seomgr_show_popup("keyword");'>Add Keyword</a>
-                            <?php //echo Seomgr_general::getInstance()->render_view('forms/keyword', '', true); ?>
+                            <?php //echo Seomgr_general::getInstance()->renderPartial('forms/keyword', '', true); ?>
 
-                            <?php Seomgr_general::getInstance()->render_view('lists/keyword'); ?>
+                            <?php Seomgr_general::getInstance()->renderPartial('lists/keyword'); ?>
 
 
                             <!--form action="<?php echo $_SERVER['REQUEST_URI'] ?>" method="POST" id="site_form">
