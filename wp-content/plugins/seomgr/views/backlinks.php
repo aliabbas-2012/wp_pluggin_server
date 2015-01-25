@@ -34,6 +34,22 @@
                             <div class="panel-heading">
                                 Site
                             </div>
+
+                            <a href='javascript:seomgr_show_popup("site");'>Add Site</a>
+
+                            <?php Seomgr_general::getInstance()->render_view('lists/site'); ?>
+
+                            <a href='javascript:seomgr_show_popup("group");'>Add Group</a>
+                            <?php //echo Seomgr_general::getInstance()->render_view('forms/group', '', true); ?>
+
+                            <?php Seomgr_general::getInstance()->render_view('lists/group'); ?>    
+
+                            <a href='javascript:seomgr_show_popup("keyword");'>Add Keyword</a>
+                            <?php //echo Seomgr_general::getInstance()->render_view('forms/keyword', '', true); ?>
+
+                            <?php Seomgr_general::getInstance()->render_view('lists/keyword'); ?>
+
+
                             <!--form action="<?php echo $_SERVER['REQUEST_URI'] ?>" method="POST" id="site_form">
 
                                 <div class="panel-body pan">
@@ -69,20 +85,6 @@
 <div id="dialog" title="Basic dialog"></div>
 
 <!--END CONTENT-->
-<a href='javascript:seomgr_show_popup("site");'>Add Site</a>
-
-<?php Seomgr_general::getInstance()->render_view('lists/site'); ?>
-
-<a href='javascript:seomgr_show_popup("group");'>Add Group</a>
-<?php //echo Seomgr_general::getInstance()->render_view('forms/group', '', true); ?>
-
-<?php Seomgr_general::getInstance()->render_view('lists/group'); ?>    
-
-<a href='javascript:seomgr_show_popup("keyword");'>Add Keyword</a>
-<?php //echo Seomgr_general::getInstance()->render_view('forms/keyword', '', true); ?>
-
-<?php Seomgr_general::getInstance()->render_view('lists/keyword'); ?>
-
 
 <div style = "display: block;">
 <!--img src = "<?php echo SEOMGR_BASE_URL . 'assets/images/demo/' . $image . '.png'; ?>" / -->

@@ -41,17 +41,17 @@ class Seomgr_general {
                 if (!empty($data)) {
                     extract($data);
                 }
-                require($view_path);
-                $content = ob_get_clean();
-
-                if ($get_content) {
-                    ob_start();
-                }
-
+//                
+//                $content = ob_get_clean();
+//
+//                if ($get_content) {
+//                    ob_start();
+//                }
+                 
                 require(SEOMGR_VIEWS_DIR . $layout . '.php');
-
+                
                 if ($get_content) {
-                    return ob_get_clean();
+                    //return ob_get_clean();
                 }
             } else {
                 echo "File: " . $view_path . " not found.";
