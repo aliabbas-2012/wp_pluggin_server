@@ -12,14 +12,14 @@
     </thead>
     <tbody>
         <?php
-        if (!empty($results)) {
+        if (!empty($results)) { 
             $i = 0;
             foreach ($results as $row) {
                 ?>
                 <tr>
                     <td><?php echo ++$i; ?></td>
-                    <td><?php echo $row->site_id; ?></td>
-                    <td><?php echo $row->group_id; ?></td>
+                    <td><?php echo $row->site_title; ?></td>
+                    <td><?php echo $row->group_title; ?></td>
                     <td><?php echo $row->title; ?></td>
                     <td><?php echo Seomgr_general::getInstance()->date_format($row->created_at); ?></td>
                     <td>

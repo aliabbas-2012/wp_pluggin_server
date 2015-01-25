@@ -77,26 +77,35 @@ class Seomgr_general {
         return false;
     }
 
-    public function get_site_dropdown($name = 'keyword[site_id]') {
+    public function get_site_dropdown($select = '', $name = 'keyword[site_id]') {
         $results = Seomgr_site_model::getInstance()->get();
         $html = '<select name="' . $name . '" id="' . $name . '" >';
+
         if (!empty($results)) {
             $html .= '<option value="">Choose Site</option>';
             foreach ($results as $row) {
-                $html .= '<option value="' . $row->id . '">' . $row->title . '</option>';
+                $select_str = '';
+                if ($select == $row->id) {
+                    $select_str = ' selected="selected" ';
+                }
+                $html .= '<option value="' . $row->id . '" ' . $select_str . '>' . $row->title . '</option>';
             }
         }
         $html .= '</select>';
         return $html;
     }
 
-    public function get_group_dropdown($name = 'keyword[group_id]') {
+    public function get_group_dropdown($select = '', $name = 'keyword[group_id]') {
         $results = Seomgr_group_model::getInstance()->get();
         $html = '<select name="' . $name . '" id="' . $name . '" >';
         if (!empty($results)) {
             $html .= '<option value="">Choose Group</option>';
             foreach ($results as $row) {
-                $html .= '<option value="' . $row->id . '">' . $row->title . '</option>';
+                $select_str = '';
+                if ($select == $row->id) {
+                    $select_str = ' selected="selected" ';
+                }
+                $html .= '<option value="' . $row->id . '" ' . $select_str . '>' . $row->title . '</option>';
             }
         }
         $html .= '</select>';
@@ -138,9 +147,9 @@ class Seomgr_general {
         echo json_encode($arr);
         exit();
     }
-    
-    public function get_value($result, $key){
-        if(isset($result->$key)){
+
+    public function get_value($result, $key) {
+        if (isset($result->$key)) {
             return $result->$key;
         }
         return false;

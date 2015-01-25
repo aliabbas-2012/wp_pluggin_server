@@ -18,7 +18,7 @@ class Seomgr_keyword_model {
 
     public function save($data = array()) {
         if (!empty($data)) {
-            unset($data['submit']);
+            unset($data['submit']); 
             if (isset($data['id']) && $data['id'] != '') {
                 $this->update($this->table, $data, array('id' => $data['id']));
             } else {
@@ -30,26 +30,26 @@ class Seomgr_keyword_model {
     }
 
     public function update($data = array(), $where = array()) {
-        if (!empty($data) && !empty($where)) {
+        if (!empty($data) && !empty($where)) { 
             $this->wpdb->update($this->table, $data, $where);
         }
         return false;
     }
 
     public function delete($where = array()) {
-        if (!empty($where)) {
-            
+        if (isset($where['id']) && !empty($where['id'])) {
+            $this->wpdb->delete($this->table, array('id' => $where['id']));
         }
         return false;
     }
 
     public function get($where = array()) {
-        
-        $sql = "SELECT keyword.*, site.title as site_title, site.title as site_title "
-                . " FROM ".$this->table." keyword"
-                . " LEFT JOIN ".Seomgr_site_model::getInstance()->table." site ON site.id=keyword.site_id "
-                . " LEFT JOIN ".Seomgr_group_model::getInstance()->table." group ON group.id=keyword.group_id ";
-        
+
+        $sql = "SELECT keyword.*, site.title as site_title, groups.title as group_title "
+                . " FROM " . $this->table . " keyword"
+                . " LEFT JOIN " . Seomgr_site_model::getInstance()->table . " site ON site.id=keyword.site_id "
+                . " LEFT JOIN " . Seomgr_group_model::getInstance()->table . " groups ON groups.id=keyword.group_id ";
+
         if (!empty($where)) {
             $i = 0;
             $sql .= " WHERE ";
@@ -61,9 +61,8 @@ class Seomgr_keyword_model {
                 $i++;
             }
         }
+        
         return $this->wpdb->get_results($sql);
     }
 
 }
-
-

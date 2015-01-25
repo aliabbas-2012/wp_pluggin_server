@@ -14,19 +14,15 @@ class Seomgr_keywords {
     public function form_callback() {
         $data = array();
         if (isset($_POST['data_id'])) {
-            $data = Seomgr_group_model::getInstance()->get(array('id' => $_POST['data_id']));
+            $data = Seomgr_keyword_model::getInstance()->get(array('keyword.id' => $_POST['data_id']));
             if(!empty($data)){
                 $data['result'] = array_pop($data);
             }
         }
-        Seomgr_general::getInstance()->render_view('forms/group', $data);
+        Seomgr_general::getInstance()->render_view('forms/keyword', $data);
         wp_die();
     }
 
-//    public function form_callback() {
-//        Seomgr_general::getInstance()->render_view('forms/keyword');
-//        wp_die();
-//    }
 
     public function load_page() {
         $data = array('image' => 'Selection_008');
@@ -36,4 +32,12 @@ class Seomgr_keywords {
         Seomgr_general::getInstance()->render_view('backlinks', $data, false, 'layout');
     }
 
+    public function delete_callback() {
+        $data = array();
+        if (isset($_POST['data_id'])) {
+            $data = Seomgr_keyword_model::getInstance()->delete(array('id' => $_POST['data_id']));
+        }
+        Seomgr_general::getInstance()->show_json_msg('Keyword has successfully deleted.', false);
+        wp_die();
+    }
 }
