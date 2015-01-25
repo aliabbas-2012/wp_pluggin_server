@@ -1,4 +1,8 @@
-
+<div id="alertType" class="alerts" style="display:none;">
+    <span class="alert_lft"></span>
+    <span id="alert_message"></span>
+    <a href="javascript:alert_close();" class="alert_close"></a>
+</div>
 <div>
     <!--BEGIN MODAL CONFIG PORTLET-->
     <div id="modal-config" class="modal fade">

@@ -52,6 +52,9 @@ function seomgr_debug($str, $exit = false) {
  * Auto Loading General Func Files
  */
 seomgr_load_file('lib/general.php');
+seomgr_load_file('lib/keywords.php');
+seomgr_load_file('lib/sites.php');
+seomgr_load_file('lib/groups.php');
 
 
 seomgr_load_file('lib/model/keyword.php');

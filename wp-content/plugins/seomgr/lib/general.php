@@ -15,15 +15,47 @@ class Seomgr_general {
      * 
      * @param type $path (dir/filename with out php extension)
      */
-    public function render_view($path = '', $data = array()) {
-        $view_path = SEOMGR_VIEWS_DIR . $path . '.php';
-        if (file_exists($view_path)) {
-            extract($data);
-            $content = file_get_contents($view_path,true);
-            require_once(SEOMGR_VIEWS_DIR."layout.php");
-            
+    public function render_view($path = '', $data = array(), $get_content = false, $layout = 'blank') {
+        /* $view_path = SEOMGR_VIEWS_DIR . $path . '.php';
+          if (file_exists($view_path)) {
+          extract($data);
+          //$content = file_get_contents($view_path,true);
+          require_once(SEOMGR_VIEWS_DIR . "layout.php");
+          } else {
+          echo "File: " . $view_path . " not found.";
+          } */
+//        $license = $this->validateLicencse();
+        if (isset($license['status']) && $license['status'] == 0) {
+            echo $license['message'];
+            echo "<br/>";
+            if (!empty($license['content'])) {
+                echo $license['content'];
+            }
         } else {
-            echo "File: " . $view_path . " not found.";
+            $layout = 'layouts/' . $layout;
+            $view_path = SEOMGR_VIEWS_DIR . $path . '.php';
+            if (file_exists($view_path)) {
+
+                ob_start();
+
+                if (!empty($data)) {
+                    extract($data);
+                }
+                require($view_path);
+                $content = ob_get_clean();
+
+                if ($get_content) {
+                    ob_start();
+                }
+
+                require(SEOMGR_VIEWS_DIR . $layout . '.php');
+
+                if ($get_content) {
+                    return ob_get_clean();
+                }
+            } else {
+                echo "File: " . $view_path . " not found.";
+            }
         }
     }
 
@@ -35,6 +67,83 @@ class Seomgr_general {
     public function deactivation() {
         seomgr_load_file('lib/activation.php');
         Seomgr_activation::getInstance()->deactivation();
+    }
+
+    public function date_format($date = '') {
+        $format = get_option('date_format');
+        if (!empty($date)) {
+            return date($format, strtotime($date));
+        }
+        return false;
+    }
+
+    public function get_site_dropdown($name = 'keyword[site_id]') {
+        $results = Seomgr_site_model::getInstance()->get();
+        $html = '<select name="' . $name . '" id="' . $name . '" >';
+        if (!empty($results)) {
+            $html .= '<option value="">Choose Site</option>';
+            foreach ($results as $row) {
+                $html .= '<option value="' . $row->id . '">' . $row->title . '</option>';
+            }
+        }
+        $html .= '</select>';
+        return $html;
+    }
+
+    public function get_group_dropdown($name = 'keyword[group_id]') {
+        $results = Seomgr_group_model::getInstance()->get();
+        $html = '<select name="' . $name . '" id="' . $name . '" >';
+        if (!empty($results)) {
+            $html .= '<option value="">Choose Group</option>';
+            foreach ($results as $row) {
+                $html .= '<option value="' . $row->id . '">' . $row->title . '</option>';
+            }
+        }
+        $html .= '</select>';
+        return $html;
+    }
+
+    public function seomgr_admin_notices() {
+        global $pagenow;
+        if (!isset($_SESSION['seomgr_notice'])) {
+            return false;
+        }
+
+        $error = '';
+        $error .= '<div class="' . $_SESSION['seomgr_notice']['type'] . '"><p>';
+        $error .= $_SESSION['seomgr_notice']['message'];
+        $error .= '</p></div>';
+        echo $error;
+        unset($_SESSION['seomgr_notice']);
+    }
+
+    public function set_notice($message = '', $type = 'success') {
+        $_SESSION['seomgr_notice']['message'] = $message;
+        $_SESSION['seomgr_notice']['type'] = ($type == 'success' ? 'updated' : $type);
+    }
+
+    public function show_json_msg($msg, $error = false) {
+        $arr = array();
+        if ($error) {
+            $arr = array(
+                'status' => 'error',
+                'msg' => $msg
+            );
+        } else {
+            $arr = array(
+                'status' => 'success',
+                'msg' => $msg
+            );
+        }
+        echo json_encode($arr);
+        exit();
+    }
+    
+    public function get_value($result, $key){
+        if(isset($result->$key)){
+            return $result->$key;
+        }
+        return false;
     }
 
 }

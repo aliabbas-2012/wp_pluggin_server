@@ -1,15 +1,9 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 class Seomgr_site_model {
 
     var $table = 'sites';
-    var $wpdb = 'sites';
+    var $wpdb;
 
     function __construct() {
         global $wpdb, $seomgr_id;
@@ -22,31 +16,49 @@ class Seomgr_site_model {
         return $class;
     }
 
-    public function insert($data = array()) {
-        if (!empty($data)) { 
-            seomgr_debug($this->table);
-            seomgr_debug($data, true);
-            $this->wpdb->insert($this->table, $data);
+    public function save($data = array()) {
+        if (!empty($data)) {
+            unset($data['submit']);
+            if (isset($data['id']) && $data['id'] != '') {
+                $this->update($this->table, $data, array('id' => $data['id']));
+            } else {
+                $data['created_at'] = date('Y-m-d H:i:s');
+                $this->wpdb->insert($this->table, $data);
+            }
         }
         return false;
     }
 
     public function update($data = array(), $where = array()) {
         if (!empty($data) && !empty($where)) {
-            
+            $this->wpdb->update($this->table, $data, $where);
         }
         return false;
     }
 
     public function delete($where = array()) {
-        if (!empty($where)) {
-            
+        if (isset($where['id']) && !empty($where['id'])) {
+            $this->wpdb->delete($this->table, array('id' => $where['id']));
         }
         return false;
     }
 
     public function get($where = array()) {
+        $sql = "SELECT * FROM " . $this->table;
+        if (!empty($where)) {
+            $i = 0;
+            $sql .= " WHERE ";
+            foreach ($where as $key => $val) {
+                if ($i > 0) {
+                    $sql .= " AND ";
+                }
+                $sql .= (" " . $key . "=" . $val . " ");
+                
+                $i++;
+            }
+        }
         
+        return $this->wpdb->get_results($sql);
     }
 
 }

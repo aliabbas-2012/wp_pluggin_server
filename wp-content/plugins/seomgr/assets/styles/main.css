@@ -7014,3 +7014,29 @@ ul.chats li.out .message {
   border-radius: 0px !important;
   border: 1px solid #e5e5e5;
 }
+.alerts {
+    border: 1px solid #acd556;
+    font-size: 14px;
+    left: 50%;
+    line-height: 20px;
+    margin-left: -221px;
+    max-width: 100%;
+    padding: 10px 14px;
+    position: absolute;
+    text-align: center;
+    top: 85px;
+    width: 412px;
+    z-index: 9999;
+}
+.alert_lft {
+    background: url("../images/alert_success.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    float: left;
+    height: 21px;
+    width: 21px;
+}
+.alert_close {
+    background: url("../images/alert_close.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+    float: right;
+    height: 21px;
+    width: 21px;
+}

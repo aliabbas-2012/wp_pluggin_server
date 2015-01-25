@@ -1,4 +1,5 @@
 <!--BEGIN TITLE & BREADCRUMB PAGE-->
+
 <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
     <div class="page-header pull-left">
         <div class="page-title">
@@ -33,7 +34,7 @@
                             <div class="panel-heading">
                                 Site
                             </div>
-                            <form action="<?php echo $_SERVER['REQUEST_URI'] ?>" method="POST" id="site_form">
+                            <!--form action="<?php echo $_SERVER['REQUEST_URI'] ?>" method="POST" id="site_form">
 
                                 <div class="panel-body pan">
                                     <form action="#">
@@ -54,7 +55,7 @@
                                     <button type="submit" class="btn btn-primary">
                                         Submit</button>
                                 </div>
-                            </form>
+                            </form-->
                         </div>
                     </div>
 
@@ -64,28 +65,28 @@
     </div>
 </div>
 
-<!--END CONTENT-->
 
-<div style="display: block;">
-<!--img src="<?php echo SEOMGR_BASE_URL . 'assets/images/demo/' . $image . '.png'; ?>" /-->
+<div id="dialog" title="Basic dialog"></div>
+
+<!--END CONTENT-->
+<a href='javascript:seomgr_show_popup("site");'>Add Site</a>
+
+<?php Seomgr_general::getInstance()->render_view('lists/site'); ?>
+
+<a href='javascript:seomgr_show_popup("group");'>Add Group</a>
+<?php //echo Seomgr_general::getInstance()->render_view('forms/group', '', true); ?>
+
+<?php Seomgr_general::getInstance()->render_view('lists/group'); ?>    
+
+<a href='javascript:seomgr_show_popup("keyword");'>Add Keyword</a>
+<?php //echo Seomgr_general::getInstance()->render_view('forms/keyword', '', true); ?>
+
+<?php Seomgr_general::getInstance()->render_view('lists/keyword'); ?>
+
+
+<div style = "display: block;">
+<!--img src = "<?php echo SEOMGR_BASE_URL . 'assets/images/demo/' . $image . '.png'; ?>" / -->
 </div>
 
-<form action="<?php echo $_SERVER['REQUEST_URI'] ?>" method="POST" id="goup_form">
-    <label>GROUP Name</label>
-    <input type="text" value="" name="group[title]" id="group[title]" />
-    <br/>
-    <input type="submit" value="Submit" name="group[submit]" id="group[submit]" />
-</form>
 <br/>
-<form action="<?php echo $_SERVER['REQUEST_URI'] ?>" method="POST" id="keyword_form">
-    <label>Site</label>
-    <input type="text" value="" name="keyword[site]" id="keyword[title]" />
-    <br/>
-    <label>Group</label>
-    <input type="text" value="" name="keyword[group]" id="keyword[title]" />
-    <br/>
-    <label>Keyword</label>
-    <input type="text" value="" name="keyword[title]" id="keyword[title]" />
-    <br/>
-    <input type="submit" value="Submit" name="keyword[submit]" id="keyword[submit]" />
-</form>
+
