@@ -12,8 +12,9 @@ class Seomgr_range{
     }
     
     public function load_page(){
+       
         $data = array('image' => 'Selection_006');
-        Seomgr_general::getInstance()->render_view('backlinks', $data);
+        Seomgr_general::getInstance()->render_view('backlinks', $data,false, 'layout');
     }
     
 }

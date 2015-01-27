@@ -81,12 +81,15 @@
     <!--BEGIN FOOTER-->
     <div id="footer">
         <div class="copyright">
-            <a href="http://itst.com">Itst</a></div>
+            <a href="http://itst.com">www.Itst.com</a></div>
     </div>
     <!--END FOOTER-->
 </div>
 <!--END PAGE WRAPPER-->
 <div class="clear"></div>
+
+<!-- for dialoge -->
+<div id="dialog" title="Basic dialog"></div>
 
 <script src="<?php echo SEOMGR_ASSETS_URL ?>script/jquery-1.10.2.min.js"></script>
 <script src="<?php echo SEOMGR_ASSETS_URL ?>script/jquery-migrate-1.2.1.min.js"></script>

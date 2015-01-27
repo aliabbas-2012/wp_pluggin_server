@@ -45,9 +45,6 @@
     </div>
 </div>
 
-
-<div id="dialog" title="Basic dialog"></div>
-
 <!--END CONTENT-->
 
 <div style = "display: block;">

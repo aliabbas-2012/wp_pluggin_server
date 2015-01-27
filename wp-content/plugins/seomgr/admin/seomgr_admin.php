@@ -144,6 +144,7 @@ class Seomgr_admin {
     }
 
     public function render_admin_range() {
+       
         seomgr_load_file('lib/range.php');
         Seomgr_range::getInstance()->load_page();
     }
