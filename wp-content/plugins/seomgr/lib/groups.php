@@ -28,7 +28,7 @@ class Seomgr_groups {
 
 
         $data = array('image' => 'Selection_007');
-        Seomgr_general::getInstance()->render_view('backlinks', $data, false, 'layout');
+        Seomgr_general::getInstance()->render_view('groups', $data, false, 'layout');
     }
     
     

@@ -12,6 +12,7 @@ class Seomgr_backlinks{
     }
     
     public function load_page(){
+     
         $data = array('image' => 'Selection_001');
         Seomgr_general::getInstance()->render_view('backlinks', $data);
     }

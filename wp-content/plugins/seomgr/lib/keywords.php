@@ -29,7 +29,7 @@ class Seomgr_keywords {
 
 
         $data = array('image' => 'Selection_007');
-        Seomgr_general::getInstance()->render_view('backlinks', $data, false, 'layout');
+        Seomgr_general::getInstance()->render_view('keywords', $data, false, 'layout');
     }
 
     public function delete_callback() {

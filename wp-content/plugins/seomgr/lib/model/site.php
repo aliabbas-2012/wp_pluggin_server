@@ -20,7 +20,7 @@ class Seomgr_site_model {
         if (!empty($data)) {
             unset($data['submit']);
             if (isset($data['id']) && $data['id'] != '') {
-                $this->update($this->table, $data, array('id' => $data['id']));
+                $this->update($data, array('id' => $data['id']));
             } else {
                 $data['created_at'] = date('Y-m-d H:i:s');
                 $this->wpdb->insert($this->table, $data);

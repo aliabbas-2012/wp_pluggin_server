@@ -3,7 +3,7 @@
 <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
     <div class="page-header pull-left">
         <div class="page-title">
-            Site , Groups , Kewords
+           Keywords
         </div>
     </div>
 
@@ -28,30 +28,11 @@
                     <div class="col-lg-12">
                         <div class="panel panel-pink">
                             <div class="panel-heading">
-                                Site
+                                KeyWords
                             </div>
 
-                            <div class="col-lg-6">
-                                <h3>Add Site</h3>
-                            </div>
-                            <div class=" breadcrumb pull-right">
-                                <a href='javascript:seomgr_show_popup("site", "Site");' class="btn btn-default">Add Site</a>
-                            </div>
-                            <?php Seomgr_general::getInstance()->renderPartial('lists/site'); ?>
-
-                            <div class="col-lg-6">
-                                <h3>Add Group</h3>
-                            </div>
                             <div class="breadcrumb pull-right">
-                                <a href='javascript:seomgr_show_popup("group", "Group");' class="btn btn-default">Add Group</a>
-                            </div>
-                            <?php Seomgr_general::getInstance()->renderPartial('lists/group'); ?>    
-
-                            <div class="col-lg-6">
-                                <h3>Add Site</h3>
-                            </div>
-                            <div class="breadcrumb pull-right">
-                                <a href='javascript:seomgr_show_popup("site", "Site");' class="btn btn-default">Add Group</a>
+                                <a href='javascript:seomgr_show_popup("keyword", "KeyWords");' class="btn btn-default">Add KeyWords</a>
                             </div>
                             <?php Seomgr_general::getInstance()->renderPartial('lists/keyword'); ?>
 

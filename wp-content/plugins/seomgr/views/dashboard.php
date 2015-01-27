@@ -1,0 +1,3 @@
+<p>
+    Sample DashBoard
+</p>

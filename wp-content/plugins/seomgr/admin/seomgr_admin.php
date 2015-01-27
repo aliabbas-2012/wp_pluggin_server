@@ -16,16 +16,15 @@ class Seomgr_admin {
         add_action('admin_menu', array($this, 'load_menu'));
         add_action('admin_notices', array('Seomgr_general', 'seomgr_admin_notices'));
         add_action('admin_init', array($this, 'load_init_actions'));
+
         add_action('wp_ajax_site', array('Seomgr_sites', 'form_callback'));
         add_action('wp_ajax_keyword', array('Seomgr_keywords', 'form_callback'));
         add_action('wp_ajax_group', array('Seomgr_groups', 'form_callback'));
-        
+
         add_action('wp_ajax_delete_site', array('Seomgr_sites', 'delete_callback'));
         add_action('wp_ajax_delete_keyword', array('Seomgr_keywords', 'delete_callback'));
         add_action('wp_ajax_delete_group', array('Seomgr_groups', 'delete_callback'));
     }
-
-
 
     public function load_init_actions() {
         //unset($_SESSION['seomgr_notice']);
@@ -56,7 +55,6 @@ class Seomgr_admin {
 
     public function load_javascript() {
         //wp_enqueue_script('script-name', get_template_directory_uri() . '/js/example.js', array(), '1.0.0', true);
-
 //        wp_enqueue_script('jquery', SEOMGR_ASSETS_URL . 'script/jquery-1.10.2.min.js', array(), '1.0.0', true);
         wp_enqueue_script('jquery-migrate', SEOMGR_ASSETS_URL . 'script/seomgr_func.js', array(), '1.0.0', true);
 //        wp_enqueue_script('jquery-migrate', SEOMGR_ASSETS_URL . 'script/jquery-migrate-1.2.1.min.js', array(), '1.0.0', true);
@@ -97,7 +95,7 @@ class Seomgr_admin {
 //        wp_enqueue_script('seomgr_main', SEOMGR_ASSETS_URL . 'script/main.js', array(), '1.0.0', true);
     }
 
-    public function save_data() { 
+    public function save_data() {
         if (isset($_POST['site'])) {
             Seomgr_site_model::getInstance()->save($_POST['site']);
             Seomgr_general::getInstance()->show_json_msg('Site has successfully saved.');
@@ -116,6 +114,8 @@ class Seomgr_admin {
         $title = apply_filters('metaslider_menu_title', "SEO Manager");
 
         add_menu_page($title, $title, 'manage_options', 'seomgr', array($this, 'render_admin_dashboard'), SEOMGR_ASSETS_URL . 'images/matchalabs.png', 6);
+        add_submenu_page('seomgr', 'Sites', 'Sites', 'manage_options', 'seomgr_sites', array($this, 'render_admin_sites'));
+        add_submenu_page('seomgr', 'Groups', 'Groups', 'manage_options', 'seomgr_groups', array($this, 'render_admin_groups'));
         add_submenu_page('seomgr', 'Keywords', 'Keywords', 'manage_options', 'seomgr_keywords', array($this, 'render_admin_keywords'));
         add_submenu_page('seomgr', 'Range Option', 'Range Option', 'manage_options', 'seomgr_range', array($this, 'render_admin_range'));
         add_submenu_page('seomgr', 'Timeline Option', 'Timeline Option', 'manage_options', 'seomgr_timeline', array($this, 'render_admin_timeline'));
@@ -126,8 +126,17 @@ class Seomgr_admin {
     }
 
     public function render_admin_dashboard() {
+
         seomgr_load_file('lib/dashboard.php');
         Seomgr_dashboard::getInstance()->load_page();
+    }
+
+    public function render_admin_sites() {
+        Seomgr_sites::getInstance()->load_page();
+    }
+
+    public function render_admin_groups() {
+        Seomgr_groups::getInstance()->load_page();
     }
 
     public function render_admin_keywords() {
@@ -160,7 +169,9 @@ class Seomgr_admin {
     }
 
     public function render_admin_backlinks() {
+
         seomgr_load_file('lib/backlinks.php');
+
         Seomgr_backlinks::getInstance()->load_page();
     }
 

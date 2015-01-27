@@ -12,6 +12,7 @@ class Seomgr_compare{
     }
     
     public function load_page(){
+      
         $data = array('image' => 'Selection_004');
         Seomgr_general::getInstance()->render_view('backlinks', $data);
     }

@@ -32,20 +32,19 @@ class Seomgr_general {
                 echo $license['content'];
             }
         } else {
-
+            
             $layout = 'layouts/' . $layout;
             $view_path = SEOMGR_VIEWS_DIR . $path . '.php';
             if (file_exists($view_path)) {
 
-
-
                 if (!empty($data)) {
                     extract($data);
                 }
-
+                //with path
                 if (!strstr($_SERVER["REQUEST_URI"], "ajax")) {
                     require(SEOMGR_VIEWS_DIR . $layout . '.php');
                 } else {
+                    //ajax mode
                     require_once($view_path);
                 }
             } else {
@@ -53,7 +52,9 @@ class Seomgr_general {
             }
         }
     }
-
+    /*
+     * rendering data
+     */
     public function renderPartial($path) {
 
         $view_path = SEOMGR_VIEWS_DIR . $path . '.php';

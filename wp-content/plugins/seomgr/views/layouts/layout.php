@@ -50,9 +50,31 @@
 </div>
 <!--END TOPBAR-->
 <div id="wrapper">
-
     <!--BEGIN PAGE WRAPPER-->
     <div id="page-wrapper">
+        <div class="col-lg-12">
+            <ul id="generalTab" class="nav nav-tabs responsive">
+                <li class="dropdown topbar-user">
+                    <a data-hover="dropdown" href="#" class="dropdown-toggle">Add Site<span class="caret"></span></a>
+                    
+                    <ul class="dropdown-menu dropdown-user pull-right">
+                         <li><a href="javascript:void(0)" onclick='seomgr_show_popup("site", "Site");'><i class="fa "></i>Add Site</a></li>
+                         <li><a href="javascript:void(0)" onclick='seomgr_show_popup("group", "Group");'><i class="fa "></i>Add Group</a></li>
+                         <li><a href="javascript:void(0)" onclick='seomgr_show_popup("keyword", "Keyword");'><i class="fa"></i>Add Key Words</a></li>
+                    </ul>
+                </li>
+                
+<!--                <li><a href="#note-tab" data-toggle="tab">Notes</a></li>
+                <li><a href="#label-badge-tab" data-toggle="tab">Labels & Badges</a></li>
+                <li><a href="#pagination-tab" data-toggle="tab">Paginations</a></li>
+                <li><a href="#input-group-tab" data-toggle="tab">Input Groups</a></li>
+                <li><a href="#list-group-tab" data-toggle="tab">List Group</a></li>
+                <li><a href="#navbar-tab" data-toggle="tab">Navbar</a></li>
+                <li><a href="#thumbnail-tab" data-toggle="tab">Thumbnails</a></li>
+                <li><a href="#other-tab" data-toggle="tab">Others</a></li>-->
+            </ul>
+        </div>
+        <div class="alert" style="display:none;"></div>
         <?php require_once($view_path); ?>
     </div>
     <!--END CONTENT-->
@@ -103,3 +125,4 @@
 <script src="<?php echo SEOMGR_ASSETS_URL ?>script/charts-highchart-more.js"></script>-->
 <!--CORE JAVASCRIPT-->
 <script src="<?php echo SEOMGR_ASSETS_URL ?>script/main.js"></script>
+<script src="<?php echo SEOMGR_ASSETS_URL ?>script/seomgr_func.js"></script>

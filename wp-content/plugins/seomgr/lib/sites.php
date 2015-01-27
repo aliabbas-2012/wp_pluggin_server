@@ -19,7 +19,7 @@ class Seomgr_sites {
                 $data['result'] = array_pop($data);
             }
         }
-        Seomgr_general::getInstance()->render_view('forms/group', $data);
+        Seomgr_general::getInstance()->render_view('forms/site', $data);
         wp_die();
     }
 
@@ -28,7 +28,7 @@ class Seomgr_sites {
 
 
         $data = array('image' => 'Selection_007');
-        Seomgr_general::getInstance()->render_view('backlinks', $data, false, 'layout');
+        Seomgr_general::getInstance()->render_view('sites', $data, false, 'layout');
     }
     
      public function delete_callback() {

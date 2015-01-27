@@ -1,5 +1,5 @@
 <?php $results = Seomgr_group_model::getInstance()->get(); ?>
-<table border="1">
+<table class="table table-hover">
     <thead>
         <tr>
             <th>#</th>
@@ -12,17 +12,26 @@
         <?php
         if (!empty($results)) {
             $i = 0;
-            foreach ($results as $row){
+            foreach ($results as $row) {
                 ?>
-            <tr id='group_<?php echo $row->id; ?>'>
-                <td><?php echo ++$i; ?></td>
-                <td><?php echo $row->title; ?></td>
-                <td><?php echo Seomgr_general::getInstance()->date_format($row->created_at); ?></td>
-                <td>
-                    <a href='javascript:seomgr_show_popup("group", "<?php echo $row->id; ?>");'>Update</a>
-                    <a href='javascript:seomgr_delete("delete_group", "<?php echo $row->id; ?>");'>Delete</a>
-                </td>
-            </tr>
-        <?php } } ?>
+                <tr id='group_<?php echo $row->id; ?>'>
+                    <td><?php echo ++$i; ?></td>
+                    <td><?php echo $row->title; ?></td>
+                    <td><?php echo Seomgr_general::getInstance()->date_format($row->created_at); ?></td>
+                    <td>
+                        <div class="page-toolbar">
+                            <button class="btn btn-blue" title="" onClick='javascript:seomgr_show_popup("group", "Group", "<?php echo $row->id; ?>");' data-hover="tooltip" type="button" data-original-title="Update">
+                                <i class="fa fa-pencil"></i>
+                            </button>
+                            &nbsp;
+                            <button class="btn btn-yellow" title="" onClick='javascript:seomgr_delete("delete_group", "<?php echo $row->id; ?>");' data-hover="tooltip" type="button" data-original-title="Delete">
+                                <i class="fa fa-trash-o"></i>
+                            </button>
+                            &nbsp;
+                        </div>
+                    </td>
+                </tr>
+            <?php }
+        } ?>
     </tbody>
 </table>

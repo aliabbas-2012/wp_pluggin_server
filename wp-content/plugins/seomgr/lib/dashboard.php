@@ -16,7 +16,7 @@ class Seomgr_dashboard {
             Seomgr_site_model::getInstance()->insert($_POST['site']);
         }
         $data = array('image' => 'Selection_011');
-        Seomgr_general::getInstance()->render_view('backlinks', $data, false, 'layout');
+        Seomgr_general::getInstance()->render_view('dashboard', $data, false, 'layout');
     }
 
 }
