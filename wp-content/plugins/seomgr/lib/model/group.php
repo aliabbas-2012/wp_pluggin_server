@@ -8,7 +8,7 @@ class Seomgr_group_model {
     function __construct() {
         global $wpdb, $seomgr_id;
         $this->wpdb = $wpdb;
-      
+
         $this->table = $wpdb->prefix . $seomgr_id . $this->table;
     }
 
@@ -17,8 +17,24 @@ class Seomgr_group_model {
         return $class;
     }
 
+    public function validation($data = array()) {
+        $error = '';
+        if (isset($data['title']) && $data['title'] != '') {
+            $res = $this->get(array('title' => $data['title']));
+            if (count($res) > 0) {
+                $error .= 'Group name Already exist.<br/>';
+            }
+        } else {
+            $error .= 'Please enter the valid group name.<br/>';
+        }
+        if ($error != '') {
+            return $error;
+        }
+        return true;
+    }
+
     public function save($data = array()) {
-        
+
         if (!empty($data)) {
 
             unset($data['submit']);
@@ -26,9 +42,8 @@ class Seomgr_group_model {
                 $this->update($data, array('id' => $data['id']));
             } else {
                 $data['created_at'] = date('Y-m-d H:i:s');
-              
+
                 $this->wpdb->insert($this->table, $data);
-              
             }
         }
         return false;
@@ -58,7 +73,7 @@ class Seomgr_group_model {
                 if ($i > 0) {
                     $sql .= " AND ";
                 }
-                $sql .= (" " . $key . "=" . $val . " ");
+                $sql .= (" " . $key . "='" . $val . "' ");
                 $i++;
             }
         }

@@ -32,7 +32,7 @@ class Seomgr_general {
                 echo $license['content'];
             }
         } else {
-            
+
             $layout = 'layouts/' . $layout;
             $view_path = SEOMGR_VIEWS_DIR . $path . '.php';
             if (file_exists($view_path)) {
@@ -52,9 +52,11 @@ class Seomgr_general {
             }
         }
     }
+
     /*
      * rendering data
      */
+
     public function renderPartial($path) {
 
         $view_path = SEOMGR_VIEWS_DIR . $path . '.php';
@@ -166,6 +168,14 @@ class Seomgr_general {
             return $result->$key;
         }
         return false;
+    }
+
+    public function is_valid_domain($domain) {
+
+        if (!preg_match("/^([-a-z0-9]{2,100})\.([a-z\.]{2,8})$/i", $domain)) {
+            return false;
+        }
+        return true;
     }
 
 }

@@ -16,6 +16,27 @@ class Seomgr_site_model {
         return $class;
     }
 
+    public function validation($data = array()) {
+        $error = '';
+        if (isset($data['title']) && $data['title'] != '') {
+            $valid = Seomgr_general::getInstance()->is_valid_domain($data['title']);
+            if ($valid !== true) {
+                $error .= 'Please enter the valid domain name.<br/>';
+            }
+
+            $res = $this->get(array('title' => $data['title']));
+            if (count($res) > 0) {
+                $error .= 'Site name Already exist.<br/>';
+            }
+        } else {
+            $error .= 'Please enter the valid domain name.<br/>';
+        }
+        if ($error != '') {
+            return $error;
+        }
+        return true;
+    }
+
     public function save($data = array()) {
         if (!empty($data)) {
             unset($data['submit']);
@@ -52,12 +73,12 @@ class Seomgr_site_model {
                 if ($i > 0) {
                     $sql .= " AND ";
                 }
-                $sql .= (" " . $key . "=" . $val . " ");
-                
+                $sql .= (" " . $key . "='" . $val . "' ");
+
                 $i++;
             }
         }
-        
+
         return $this->wpdb->get_results($sql);
     }
 
