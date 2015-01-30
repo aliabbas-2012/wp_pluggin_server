@@ -97,12 +97,20 @@ class Seomgr_admin {
 
     public function save_data() {
         if (isset($_POST['site'])) {
-            Seomgr_site_model::getInstance()->save($_POST['site']);
-            Seomgr_general::getInstance()->show_json_msg('Site has successfully saved.');
+            $valid = Seomgr_site_model::getInstance()->validation($_POST['site']);
+            if ($valid === true) {
+                Seomgr_site_model::getInstance()->save($_POST['site']);
+                Seomgr_general::getInstance()->show_json_msg('Site has successfully saved.');
+            }
+            Seomgr_general::getInstance()->show_json_msg($valid, true);
         }
         if (isset($_POST['group'])) {
-            Seomgr_group_model::getInstance()->save($_POST['group']);
-            Seomgr_general::getInstance()->show_json_msg('Group has successfully saved.');
+            $valid = Seomgr_group_model::getInstance()->validation($_POST['group']);
+            if ($valid === true) {
+                Seomgr_group_model::getInstance()->save($_POST['group']);
+                Seomgr_general::getInstance()->show_json_msg('Group has successfully saved.');
+            }
+            Seomgr_general::getInstance()->show_json_msg($valid, true);
         }
         if (isset($_POST['keyword'])) {
             Seomgr_keyword_model::getInstance()->save($_POST['keyword']);
