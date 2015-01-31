@@ -1,0 +1,39 @@
+* About to connect() to www.google.it port 443 (#0)
+*   Trying 173.194.66.94... * connected
+* Connected to www.google.it (173.194.66.94) port 443 (#0)
+* Initializing NSS with certpath: sql:/etc/pki/nssdb
+*   CAfile: /etc/pki/tls/certs/ca-bundle.crt
+  CApath: none
+* SSL connection using TLS_RSA_WITH_RC4_128_SHA
+* Server certificate:
+* 	subject: CN=*.google.it,O=Google Inc,L=Mountain View,ST=California,C=US
+* 	start date: Jan 14 13:37:52 2015 GMT
+* 	expire date: Apr 14 00:00:00 2015 GMT
+* 	common name: *.google.it
+* 	issuer: CN=Google Internet Authority G2,O=Google Inc,C=US
+> GET /search?q=stufe+bioetanolo+pro+e+contro&btnG=Search&client=ubuntu&channel=fs&num=100 HTTP/1.1
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:28.0) Gecko/20100101 Firefox/28.0
+Host: www.google.it
+Accept: */*
+Referer: https://www.google.it
+
+< HTTP/1.1 200 OK
+< Date: Thu, 29 Jan 2015 19:29:40 GMT
+< Expires: -1
+< Cache-Control: private, max-age=0
+< Content-Type: text/html; charset=UTF-8
+* Added cookie PREF="ID=076dcb37bd890472:FF=0:TM=1422559780:LM=1422559780:S=C4bvmzl0mBldFzA5" for domain google.it, path /, expire 1485631780
+< Set-Cookie: PREF=ID=076dcb37bd890472:FF=0:TM=1422559780:LM=1422559780:S=C4bvmzl0mBldFzA5; expires=Sat, 28-Jan-2017 19:29:40 GMT; path=/; domain=.google.it
+* Added cookie NID="67=CvTKtKEwow_Ujx8GV0zlfcq4RVDUu0c65vE3cxN70rTPl_VqM3s_uZzHjmCPq5reiStbzdMU95biC_Ue01IfIhAuktCFu4UVpwjgE7z-S-5hqcHjELPBhAvGXDLbINJM" for domain google.it, path /, expire 1438370980
+< Set-Cookie: NID=67=CvTKtKEwow_Ujx8GV0zlfcq4RVDUu0c65vE3cxN70rTPl_VqM3s_uZzHjmCPq5reiStbzdMU95biC_Ue01IfIhAuktCFu4UVpwjgE7z-S-5hqcHjELPBhAvGXDLbINJM; expires=Fri, 31-Jul-2015 19:29:40 GMT; path=/; domain=.google.it; HttpOnly
+< P3P: CP="This is not a P3P policy! See http://www.google.com/support/accounts/bin/answer.py?hl=en&answer=151657 for more info."
+< Server: gws
+< X-XSS-Protection: 1; mode=block
+< X-Frame-Options: SAMEORIGIN
+< Alternate-Protocol: 443:quic,p=0.02
+< Accept-Ranges: none
+< Vary: Accept-Encoding
+< Transfer-Encoding: chunked
+< 
+* Connection #0 to host www.google.it left intact
+* Closing connection #0

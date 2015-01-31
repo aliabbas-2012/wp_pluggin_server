@@ -1,0 +1,23 @@
+@16/6/2014 v1.2.1
+Fix: remove proxy when permissions denied now works
+
+
+@15/6/2014 v1.2.0
+Fix: whatsmyserp proxy service
+
+
+@28 May 2014  v1.1.0
+Fix: daily email
+Fix: ajax api via UI searchIndex
+Fix: Google direct and ajax api www. prefix
+Fix: Google ajax api via ui final index
+Fix: URL of ajax api via backend
+Fix: external cron job only 
+
+@3 MAY 2014  v1.0.1
+New: Daily Email Report
+Fix: bulk delete option now works fine
+Fix: keywords add/delete now more faster
+
+@28 APR 2014 v1.0.0
+Initial Release
